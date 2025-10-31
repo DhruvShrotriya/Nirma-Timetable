@@ -73,9 +73,9 @@ if roll_no:
 
                     # Strict regex pattern for exact matches
                     if div_code:
-                        pattern = rf"\b{re.escape(subject_code)}\(['’]?\s*{div_code}\)"
+                        pattern = rf"(?<!\w){re.escape(subject_code)}\s*\(['’]?\s*{div_code}\s*['’]?\)"
                     else:
-                        pattern = rf"\b{re.escape(subject_code)}(?!\()"
+                        pattern = rf"\b{re.escape(subject_code)}\b(?!\s*\()"
 
                     if re.search(pattern, cell):
                         results.append({
